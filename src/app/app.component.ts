@@ -10,8 +10,7 @@ import {TestService} from './test.service';
   styleUrls: ['./app.component.css'],
   providers: [HeroService]
 })
-export class AppComponent implements OnInit{
-  constructor(private heroService: HeroService) { }
+export class AppComponent implements OnInit {
   test = new TestService();
   title = 'CHUBBY CHAN';
   heroes: Hero[];
@@ -19,8 +18,9 @@ export class AppComponent implements OnInit{
   switched = 'nice';
   plural = 3;
   num = 0;
-  num2 = 0;
+  num2 = 1;
   arrayed = [];
+  constructor(private heroService: HeroService) { }
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
