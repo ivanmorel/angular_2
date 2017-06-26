@@ -1,11 +1,28 @@
  <h1>{{title}}</h1>
   <h2>My Heroes</h2>
   <ul class="heroes">
-    <li *ngFor="let hero of heroes"
+    <li *ngFor="let hero of heroes as heroes; index as i; first as isFirst; last as isLast; even as even; odd as odd"
     (click)="onSelect(hero)"
     [class.selected]="hero === selectedHero">
-      <span class="badge">{{hero.id}}</span>{{hero.name}}
+      <span *ngIf="isFirst; then thenblock else elseblock; ">if</span>
+      <ng-template #thenblock>then </ng-template>
+      <ng-template #elseblock>else manin</ng-template>
+      <span *ngIf="isFirst">Primero</span>
+      <span *ngIf="isLast">Ultimo</span>
+      <span *ngIf="even">Even</span>
+      <span *ngIf="odd">Odd</span>
+      {{i}}<span class="badge">{{hero.id}}</span>{{hero.name}}
     </li>
   </ul>
+ <div [ngSwitch]="switched">
+   <div *ngSwitchCase="'nice'">NICE</div>
+   <div *ngSwitchCase="'klk'">Klk eso no es nah</div>
+   <div *ngSwitchDefault>nada</div>
+ <div [ngPlural]="plural">
+   <ng-template ngPluralCase="=1">1</ng-template>
+   <ng-template ngPluralCase="=2">2</ng-template>
+   <ng-template ngPluralCase="=3">3</ng-template>
+ </div>
+   {{switched}}
   <h2>Selected hero details:</h2>
   <hero-detail [hero]="selectedHero"></hero-detail>
