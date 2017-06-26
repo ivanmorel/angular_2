@@ -16,6 +16,8 @@ export class AppComponent implements OnInit{
   selectedHero: Hero;
   switched = 'nice';
   plural = 3;
+  num = 0;
+  arrayed = [];
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
@@ -24,6 +26,7 @@ export class AppComponent implements OnInit{
   }
   ngOnInit(): void {
     this.getHeroes();
+    this.num = this.heroService.getOne();
   }
 }
 
